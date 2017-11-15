@@ -12,12 +12,12 @@ B = rgb2hsv(A);
 
 C = B(:,:,1);
 
-D = C>0.8;
+D = uint8(C>0.8);
 
-
+E = imopen(D, strel('disk',3));
 
 figure(10);
-imshow(D);
+imshow(C);
 
 
 %C = imbinarize();
@@ -122,7 +122,14 @@ disp(['Since the brightes white parts were the sharpest edges I chose ' ...
 % -----Finish Solving Problem 2.1-----
  pause()
 % -----Start Solving Problem 2.2-----
+%%
+H1 = imread('Horse1.jpg');
+H2 = imread('Horse2.jpg');
+E1 = imread('Elephant1.jpg');
+E2 = imread('Elephant2.jpg');
 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure(4);
 subplot(3,1,1);
 imshow(R);
